@@ -76,18 +76,18 @@ export default function HeroSection() {
               initial={{ opacity: 0, scale: 0.95 }}
               animate={{ 
                 opacity: 1, 
-                scale: 1,
-                rotateX,
-                rotateY
+                scale: 1
               }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ 
                 opacity: { duration: 0.4 },
-                scale: { duration: 0.4 },
-                rotateX: { type: 'spring', stiffness: 60, damping: 20 },
-                rotateY: { type: 'spring', stiffness: 60, damping: 20 }
+                scale: { duration: 0.4 }
               }}
-              style={{ transformStyle: 'preserve-3d' }}
+              style={{ 
+                transformStyle: 'preserve-3d',
+                rotateX,
+                rotateY
+              }}
             >
               <div className={styles.imageContainer}>
                 <Image
