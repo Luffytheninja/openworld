@@ -84,7 +84,7 @@ export default function StoreSection() {
               </div>
 
               <h2 className={styles.productName}>OPN WRLD<br />001 Tee</h2>
-              <p className={styles.productPrice}>₦45,000</p>
+              <p className={styles.productPrice}>₦25,000</p>
 
               {/* COLORWAY */}
               <div className={styles.selector}>

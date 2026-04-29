@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'OPN WRLD — 001 Tee Preorder | Lagos',
-    description: 'Preorder the OPN WRLD 001 Tee. ₦45,000. Two colorways.',
+    description: 'Preorder the OPN WRLD 001 Tee. ₦25,000. Two colorways.',
     images: ['/og-image.png'],
   },
   keywords: ['streetwear', 'Lagos', 'Nigeria', 'preorder', 'tee', 'OPN WRLD', '001 tee'],

@@ -51,7 +51,7 @@ export default function HeroSection() {
             Blinding<br /><em>Lights</em>
           </h1>
           <div className={styles.meta}>
-            <span className={styles.price}>₦45,000</span>
+            <span className={styles.price}>₦25,000</span>
             <span className={styles.colorInfo}>001 Tee — 280gsm cotton</span>
           </div>
           <div className={styles.actions}>
