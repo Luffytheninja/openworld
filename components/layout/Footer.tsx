@@ -13,7 +13,7 @@ export default function Footer() {
           <div className={styles.group}>
             <h4>Connect</h4>
             <a href="https://whatsapp.com/channel/0029VbC4xwK3rZZUI2Odc50b" target="_blank" rel="noopener noreferrer">Community</a>
-            <a href="https://instagram.com/opnwrld" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.instagram.com/rocketmancave_/" target="_blank" rel="noopener noreferrer">Instagram</a>
           </div>
           <div className={styles.group}>
             <h4>Info</h4>

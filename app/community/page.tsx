@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function CommunityPage() {
   const WA_CHANNEL = 'https://whatsapp.com/channel/0029VbC4xwK3rZZUI2Odc50b';
-  const INSTAGRAM = 'https://instagram.com/opnwrld';
+  const INSTAGRAM = 'https://www.instagram.com/rocketmancave_/';
 
   return (
     <div className={`page-top-pad ${styles.page}`}>
