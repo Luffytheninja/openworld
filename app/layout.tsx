@@ -23,16 +23,16 @@ const dmMono = DM_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL('https://opnwrld.com'),
   title: {
-    default: 'OPN WRLD — 001 Tee Preorder | Lagos',
+    default: 'OPN WRLD — Blinding Lights Preorder | Lagos',
     template: '%s | OPN WRLD',
   },
-  description: 'OPN WRLD 001 Tee. Preorder now. 280gsm heavyweight cotton, two colorways. Lagos-born streetwear. Secure your cargo.',
+  description: 'OPN WRLD Blinding Lights Drop. Preorder now. 280gsm heavyweight cotton, two colorways. Lagos-born streetwear. Secure your cargo.',
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'OPN WRLD — 001 Tee Preorder | Lagos',
+    title: 'OPN WRLD — Blinding Lights Preorder | Lagos',
     description: '280gsm heavyweight cotton tee. Two colorways. Preorder open now.',
     url: 'https://opnwrld.com',
     siteName: 'OPN WRLD',

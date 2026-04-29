@@ -37,7 +37,7 @@ export default function HeroSection() {
   const nextImage = () => setIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
 
   const waLink = `https://wa.me/2347013927121?text=${encodeURIComponent(
-    `Hi OPN WRLD, I'd like to preorder the 001 Tee.\nColorway: ${current.id === 'black' ? 'Black' : 'Yellow'}\nSize: \nName: `
+    `Hi OPN WRLD, I'd like to preorder the Blinding Lights 001 Tee.\nColorway: ${current.id === 'black' ? 'Black' : 'Yellow'}\nSize: \nName: `
   )}`;
 
   return (
@@ -46,13 +46,13 @@ export default function HeroSection() {
         {/* TEXT SIDE */}
         <div className={styles.textSide}>
           <div className={styles.badge}>Preorder Open</div>
-          <p className={styles.eyebrow}>OPN WRLD 2026 — First Drop</p>
+          <p className={styles.eyebrow}>OPN WRLD 2026 — Blinding Lights</p>
           <h1 className={styles.headline}>
-            001<br /><em>Tee</em>
+            Blinding<br /><em>Lights</em>
           </h1>
           <div className={styles.meta}>
             <span className={styles.price}>₦45,000</span>
-            <span className={styles.colorInfo}>280gsm cotton — Lagos Crafted</span>
+            <span className={styles.colorInfo}>001 Tee — 280gsm cotton</span>
           </div>
           <div className={styles.actions}>
             <MagneticButton>
