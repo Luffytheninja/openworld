@@ -39,9 +39,9 @@ export default function CommunityPage() {
         {/* PREORDER CTA */}
         <div className={styles.preorderBlock}>
           <p className={styles.preorderLabel}>Ready to order?</p>
-          <h2 className={styles.preorderHeading}>Secure your 001 Tee</h2>
+          <h2 className={styles.preorderHeading}>Secure your Blinding Lights Tee</h2>
           <a
-            href={`https://wa.me/2347013927121?text=${encodeURIComponent('Hi OPN WRLD, I\'d like to preorder the 001 Tee.\nColorway: \nSize: \nName: ')}`}
+            href={`https://wa.me/2347013927121?text=${encodeURIComponent('Hi OPN WRLD, I\'d like to preorder the Blinding Lights 001 Tee.\nColorway: \nSize: \nName: ')}`}
             target="_blank"
             rel="noopener noreferrer"
             className={styles.preorderBtn}

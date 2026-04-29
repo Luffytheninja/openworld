@@ -30,7 +30,7 @@ export default function StoreSection() {
   const imgSrc = view === 'front' ? current.front : current.back;
 
   const waLink = `https://wa.me/2347013927121?text=${encodeURIComponent(
-    `Hi OPN WRLD, I'd like to preorder the 001 Tee.\nColorway: ${current.label}\nSize: ${size ?? '(not selected)'}\nName: `
+    `Hi OPN WRLD, I'd like to preorder the Blinding Lights 001 Tee.\nColorway: ${current.label}\nSize: ${size ?? '(not selected)'}\nName: `
   )}`;
 
   return (
@@ -41,7 +41,7 @@ export default function StoreSection() {
           <div className={styles.sectionHeader}>
             <div>
               <p className={styles.sectionLabel}>Store / X01</p>
-              <h2 className={styles.sectionTitle}>OPN WRLD 001 Tee</h2>
+              <h2 className={styles.sectionTitle}>Blinding Lights</h2>
             </div>
             <a href="/product" className={styles.viewAll}>Full Details →</a>
           </div>

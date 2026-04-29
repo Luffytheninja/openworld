@@ -2,8 +2,8 @@ import StoreSection from '@/components/sections/StoreSection';
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: 'OPN WRLD 001 Tee — Product Details',
-  description: 'Detailed look at the OPN WRLD 001 Tee. 280gsm heavyweight cotton, oversized fit, two colorways. Lagos-born streetwear.',
+  title: 'Blinding Lights — Product Details',
+  description: 'Detailed look at the OPN WRLD Blinding Lights 001 Tee. 280gsm heavyweight cotton, oversized fit, two colorways. Lagos-born streetwear.',
 };
 
 export default function ProductPage() {
