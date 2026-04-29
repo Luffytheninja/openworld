@@ -1,0 +1,81 @@
+/* Fonts are loaded via next/font in app/layout.tsx — no @import needed */
+
+/* ─── DESIGN TOKENS ─────────────────────────────────── */
+:root {
+  --bg-primary:   #FFFFFF;
+  --bg-secondary: #FAFAFA;
+  --bg-tertiary:  #F4F4F4;
+  --text-primary:   #0A0A0A;
+  --text-secondary: #3D3D3D;
+  --text-muted:     #8A8A8A;
+  --border:       #E8E8E8;
+  --border-mid:   #C8C8C8;
+
+  /* --font-sans and --font-mono are injected by next/font via the <html> class */
+
+  --header-h: 60px;
+  --max-w:    1440px;
+  --pad-x:    clamp(20px, 5vw, 64px);
+}
+
+/* ─── RESET ─────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--bg-primary);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img, video { display: block; max-width: 100%; }
+a { color: inherit; text-decoration: none; }
+button { cursor: pointer; border: none; background: none; font: inherit; }
+ul, ol { list-style: none; }
+
+/* ─── TYPOGRAPHY ─────────────────────────────────────── */
+h1, h2, h3, h4, h5 { font-family: var(--font-sans); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
+
+/* ─── UTILITIES ──────────────────────────────────────── */
+.container {
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+  padding: 0 var(--pad-x);
+}
+
+.label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.page-top-pad { padding-top: var(--header-h); }
+
+/* ─── SCROLLBAR ──────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg-secondary); }
+::-webkit-scrollbar-thumb { background: var(--border-mid); border-radius: 2px; }
+
+/* ─── TRANSITIONS ────────────────────────────────────── */
+.page-transition { animation: fadeUp 0.4s ease both; }
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── FOCUS ──────────────────────────────────────────── */
+:focus-visible { outline: 2px solid var(--text-primary); outline-offset: 3px; }
