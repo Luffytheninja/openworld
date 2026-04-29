@@ -1,6 +1,6 @@
 'use client';
 import { useRef, useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
 import styles from './MagneticButton.module.css';
 
 interface MagneticButtonProps {
@@ -11,11 +11,11 @@ interface MagneticButtonProps {
 export default function MagneticButton({ children, className = '' }: MagneticButtonProps) {
   const ref = useRef<HTMLDivElement>(null);
   
-  const x = motion.useMotionValue(0);
-  const y = motion.useMotionValue(0);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
   
-  const springX = motion.useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
-  const springY = motion.useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+  const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
 
   const handleMouseMove = (e: React.MouseEvent) => {
     if (!ref.current) return;

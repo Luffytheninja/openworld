@@ -2,7 +2,7 @@
 import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import MagneticButton from '@/components/ui/MagneticButton';
 import styles from './HeroSection.module.css';
 
@@ -13,12 +13,12 @@ const CAROUSEL_IMAGES = [
 
 export default function HeroSection() {
   const [index, setIndex] = useState(0);
-  const mouseX = motion.useMotionValue(0);
-  const mouseY = motion.useMotionValue(0);
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const springConfig = { stiffness: 60, damping: 25 };
-  const rotateX = motion.useSpring(mouseY, springConfig);
-  const rotateY = motion.useSpring(mouseX, springConfig);
+  const rotateX = useSpring(mouseY, springConfig);
+  const rotateY = useSpring(mouseX, springConfig);
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
