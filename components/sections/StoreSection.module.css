@@ -240,7 +240,7 @@
 .sizeGuideLink:hover { color: var(--text-primary); }
 
 /* ── CTA ─────────────────────────────────────────────── */
-.ctaWrap { display: flex; flex-direction: column; gap: 12px; }
+.ctaWrap { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
 
 .secureCargo {
   display: flex;
@@ -257,13 +257,14 @@
   border: 1px solid var(--text-primary);
   padding: 18px 32px;
   text-decoration: none;
-  transition: background 0.2s, color 0.2s;
+  transition: background 0.2s, color 0.2s, border-color 0.2s;
   cursor: pointer;
 }
 
 .secureCargo:hover {
   background: transparent;
   color: var(--text-primary);
+  border-color: var(--text-primary);
 }
 
 .ctaNote {
@@ -272,7 +273,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-muted);
-  text-align: center;
+  text-align: left;
 }
 
 /* ── PRODUCT INFO ────────────────────────────────────── */

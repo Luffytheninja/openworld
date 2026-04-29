@@ -3,7 +3,6 @@ import { useState, useRef, useEffect } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
-import MagneticButton from '@/components/ui/MagneticButton';
 import styles from './HeroSection.module.css';
 
 const CAROUSEL_IMAGES = [
@@ -55,14 +54,19 @@ export default function HeroSection() {
             <span className={styles.colorInfo}>001 Tee — 280gsm cotton</span>
           </div>
           <div className={styles.actions}>
-            <MagneticButton>
-              <a href={waLink} target="_blank" rel="noopener noreferrer" className={styles.ctaBtn}>
-                Secure Cargo
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                  <path d="M5 12h14M12 5l7 7-7 7" />
-                </svg>
-              </a>
-            </MagneticButton>
+            <motion.a
+              href={waLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.ctaBtn}
+              whileHover={{ rotateY: 360 }}
+              transition={{ type: 'spring', stiffness: 200, damping: 10 }}
+            >
+              Secure Cargo
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
+                <path d="M5 12h14M12 5l7 7-7 7" />
+              </svg>
+            </motion.a>
             <button onClick={nextImage} className={styles.secondaryLink}>Next Colorway</button>
           </div>
         </div>
