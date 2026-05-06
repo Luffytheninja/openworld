@@ -39,11 +39,8 @@ export default function StoreSection() {
         <div className={styles.container}>
           {/* SECTION HEADER */}
           <div className={styles.sectionHeader}>
-            <div>
-              <p className={styles.sectionLabel}>Store / X01</p>
-              <h2 className={styles.sectionTitle}>Blinding Lights</h2>
-            </div>
-            <a href="/product" className={styles.viewAll}>Full Details →</a>
+            <p className={styles.sectionLabel}>Store / X01</p>
+            <h2 className={styles.sectionTitle}>Blinding Lights</h2>
           </div>
 
           {/* PRODUCT GRID */}

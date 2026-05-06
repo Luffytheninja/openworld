@@ -1,7 +1,6 @@
 'use client';
-import { useState, useRef, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import Link from 'next/link';
 import { motion, AnimatePresence, useMotionValue, useSpring } from 'framer-motion';
 import styles from './HeroSection.module.css';
 
@@ -35,9 +34,6 @@ export default function HeroSection() {
 
   const nextImage = () => setIndex((prev) => (prev + 1) % CAROUSEL_IMAGES.length);
 
-  const waLink = `https://wa.me/2347013927121?text=${encodeURIComponent(
-    `Hi OPN WRLD, I'd like to preorder the Blinding Lights 001 Tee.\nColorway: ${current.id === 'black' ? 'Black' : 'Yellow'}\nSize: \nName: `
-  )}`;
 
   return (
     <section className={styles.hero} aria-label="Hero">
@@ -49,24 +45,8 @@ export default function HeroSection() {
           <h1 className={styles.headline}>
             Blinding<br /><em>Lights</em>
           </h1>
-          <div className={styles.meta}>
-            <span className={styles.price}>₦25,000</span>
-            <span className={styles.colorInfo}>001 Tee — 280gsm cotton</span>
-          </div>
+          <span className={styles.colorInfo}>001 Tee — 280gsm cotton</span>
           <div className={styles.actions}>
-            <motion.a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={styles.ctaBtn}
-              whileHover={{ rotateY: 360 }}
-              transition={{ type: 'spring', stiffness: 200, damping: 10 }}
-            >
-              Secure Cargo
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" aria-hidden="true">
-                <path d="M5 12h14M12 5l7 7-7 7" />
-              </svg>
-            </motion.a>
             <button onClick={nextImage} className={styles.secondaryLink}>Next Colorway</button>
           </div>
         </div>
