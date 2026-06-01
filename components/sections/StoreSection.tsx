@@ -9,6 +9,7 @@ const SIZES = ['XS', 'S', 'M', 'L', 'XL', 'XXL'] as const;
 const COLORWAYS = [
   { id: 'black', label: 'Black', swatch: '#0A0A0A', front: '/images/blbf.png', back: '/images/blbb.png' },
   { id: 'yellow', label: 'Yellow', swatch: '#F5C200', front: '/images/blyf.png', back: '/images/blyb.png' },
+  { id: 'white', label: 'White', swatch: '#FFFFFF', front: '/images/blwf.png', back: '/images/blwb.png' },
 ] as const;
 
 const SIZE_GUIDE = [
