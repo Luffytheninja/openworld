@@ -80,8 +80,8 @@ export default function StoreSection() {
                 <span className={styles.preorderBadge}>Cargo En Route</span>
               </div>
 
-              <h2 className={styles.productName}>OPN WRLD<br />001 Tee</h2>
-              <p className={styles.productPrice}>₦25,000</p>
+              <h2 className={styles.productName}>OPN WRLD<br />Blinding Lights Tee</h2>
+              <p className={styles.productPrice}>₦30,000</p>
 
               {/* COLORWAY */}
               <div className={styles.selector}>
