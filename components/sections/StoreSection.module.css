@@ -372,8 +372,18 @@
 /* ── RESPONSIVE ─────────────────────────────────────── */
 @media (max-width: 900px) {
   .product {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 40px;
+    width: 100%;
+    max-width: 100vw;
   }
-  .imagePanel { position: static; }
+  .detailPanel {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    word-break: break-word;
+    overflow-wrap: break-word;
+  }
+  .imagePanel { position: static; width: 100%; }
 }
