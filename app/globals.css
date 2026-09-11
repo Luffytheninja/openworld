@@ -1,4 +1,4 @@
-/* Fonts are loaded via next/font in app/layout.tsx — no @import needed */
+@import url('https://fonts.googleapis.com/css2?family=Sedgwick+Ave+Display&family=Inter:wght@300;400;500;600;700&display=swap');
 
 /* ─── DESIGN TOKENS ─────────────────────────────────── */
 :root {
@@ -11,11 +11,13 @@
   --border:       #E8E8E8;
   --border-mid:   #C8C8C8;
 
-  /* --font-sans and --font-mono are injected by next/font via the <html> class */
+  /* Typography */
+  --font-display: var(--font-sedgwick, 'Sedgwick Ave Display', cursive, sans-serif);
+  --font-body:    var(--font-inter, 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif);
 
-  --header-h: 60px;
+  --header-h: 70px;
   --max-w:    1440px;
-  --pad-x:    clamp(20px, 5vw, 64px);
+  --pad-x:    clamp(16px, 4vw, 48px);
 }
 
 /* ─── RESET ─────────────────────────────────────────── */
@@ -32,9 +34,9 @@ html {
 body {
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-family: var(--font-sans);
-  font-size: 15px;
-  line-height: 1.6;
+  font-family: var(--font-body);
+  font-size: 14px;
+  line-height: 1.5;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;
@@ -47,7 +49,19 @@ button { cursor: pointer; border: none; background: none; font: inherit; }
 ul, ol { list-style: none; }
 
 /* ─── TYPOGRAPHY ─────────────────────────────────────── */
-h1, h2, h3, h4, h5 { font-family: var(--font-sans); font-weight: 700; line-height: 1.05; letter-spacing: -0.03em; }
+.font-display {
+  font-family: var(--font-display);
+}
+
+.font-body {
+  font-family: var(--font-body);
+}
+
+h1, h2, h3, h4, h5 {
+  font-family: var(--font-body);
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
 
 /* ─── UTILITIES ──────────────────────────────────────── */
 .container {
@@ -58,10 +72,10 @@ h1, h2, h3, h4, h5 { font-family: var(--font-sans); font-weight: 700; line-heigh
 }
 
 .label {
-  font-family: var(--font-mono);
+  font-family: var(--font-body);
   font-size: 11px;
-  font-weight: 400;
-  letter-spacing: 0.12em;
+  font-weight: 600;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--text-muted);
 }

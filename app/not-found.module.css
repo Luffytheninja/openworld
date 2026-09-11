@@ -1,0 +1,54 @@
+.page {
+  position: relative;
+  min-height: 100vh;
+  background-color: #FFFFFF;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+.bottomRow {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 48px) clamp(0px, 1vh, 12px);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.errorText {
+  font-family: var(--font-display);
+  font-size: clamp(64px, 15vw, 200px);
+  line-height: 0.85;
+  color: #000000;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  user-select: none;
+  transform: translateY(10px);
+  /* Graffiti stroke treatment — matches Sedgwick Ave Display reference */
+  -webkit-text-stroke: 2px #000000;
+}
+
+.exploreLink {
+  font-family: var(--font-body);
+  font-size: clamp(14px, 1.4vw, 18px);
+  font-weight: 400;
+  color: #0A0A0A;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  padding-bottom: clamp(12px, 2vh, 24px);
+  transition: opacity 0.2s;
+  white-space: nowrap;
+}
+
+.exploreLink:hover {
+  opacity: 0.6;
+}
+
+@media (max-width: 768px) {
+  .errorText {
+    font-size: clamp(52px, 18vw, 100px);
+    -webkit-text-stroke: 1.5px #000000;
+  }
+}

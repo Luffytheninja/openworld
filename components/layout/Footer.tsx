@@ -1,4 +1,4 @@
-import Link from 'next/link';
+﻿import Link from 'next/link';
 import styles from './Footer.module.css';
 
 export default function Footer() {
@@ -11,6 +11,13 @@ export default function Footer() {
             <p className={styles.tagline}>Lagos, Nigeria — Est. 2026</p>
           </div>
           <div className={styles.group}>
+            <h4>Navigate</h4>
+            <Link href="/shirts">Shirts</Link>
+            <Link href="/shorts">Shorts</Link>
+            <Link href="/trousers">Trousers</Link>
+            <Link href="/caps">Caps</Link>
+          </div>
+          <div className={styles.group}>
             <h4>Connect</h4>
             <a href="https://whatsapp.com/channel/0029VbC4xwK3rZZUI2Odc50b" target="_blank" rel="noopener noreferrer">Community</a>
             <a href="https://www.instagram.com/rocketmancave_/" target="_blank" rel="noopener noreferrer">Instagram</a>
@@ -19,7 +26,7 @@ export default function Footer() {
             <h4>Info</h4>
             <Link href="/terms">Terms</Link>
             <Link href="/privacy">Privacy</Link>
-            <Link href="/community">Community</Link>
+            <Link href="/archive">Archive</Link>
           </div>
         </div>
         <div className={styles.bottom}>

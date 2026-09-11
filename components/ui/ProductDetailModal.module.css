@@ -1,0 +1,274 @@
+﻿.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  backdrop-filter: blur(8px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px;
+  animation: fadeIn 0.2s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+.modal {
+  position: relative;
+  width: 100%;
+  max-width: 860px;
+  max-height: 90vh;
+  background: #FFFFFF;
+  border-radius: 4px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.35);
+  overflow-y: auto;
+  padding: 36px 32px;
+}
+
+.closeBtn {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  font-size: 20px;
+  color: #666666;
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s;
+  z-index: 10;
+}
+
+.closeBtn:hover {
+  background: #F0F0F0;
+  color: #000000;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 36px;
+  align-items: start;
+}
+
+@media (max-width: 768px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+}
+
+.imageColumn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+.mainImageWrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1/1;
+  background: #000000;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.mainImage {
+  object-fit: contain;
+}
+
+.viewToggle {
+  display: flex;
+  gap: 8px;
+}
+
+.toggleBtn {
+  font-size: 12px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 6px 16px;
+  border: 1px solid #E0E0E0;
+  border-radius: 2px;
+  transition: all 0.15s;
+}
+
+.toggleBtn:hover {
+  border-color: #000000;
+}
+
+.activeToggle {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+}
+
+.detailsColumn {
+  display: flex;
+  flex-direction: column;
+}
+
+.categoryBadge {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  color: #888888;
+  margin-bottom: 6px;
+}
+
+.title {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin-bottom: 4px;
+  letter-spacing: -0.02em;
+}
+
+.price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0A0A0A;
+  margin-bottom: 8px;
+}
+
+.tagline {
+  font-size: 13px;
+  color: #666666;
+  margin-bottom: 20px;
+}
+
+.section {
+  margin-bottom: 18px;
+}
+
+.sectionLabel {
+  display: block;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #444444;
+  margin-bottom: 8px;
+}
+
+.sectionLabel span {
+  font-weight: 400;
+  color: #0A0A0A;
+}
+
+.swatchList {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.swatchBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 12px;
+  border: 1px solid #E0E0E0;
+  border-radius: 3px;
+  font-size: 12px;
+  transition: all 0.15s;
+}
+
+.swatchBtn:hover {
+  border-color: #000000;
+}
+
+.selectedSwatch {
+  border-color: #000000;
+  background: #F7F7F7;
+  font-weight: 600;
+}
+
+.swatchDot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  border: 1px solid #CCCCCC;
+}
+
+.sizeList {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.sizeBtn {
+  min-width: 40px;
+  height: 36px;
+  padding: 0 10px;
+  border: 1px solid #E0E0E0;
+  border-radius: 3px;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.15s;
+}
+
+.sizeBtn:hover {
+  border-color: #000000;
+}
+
+.selectedSize {
+  background: #000000;
+  color: #FFFFFF;
+  border-color: #000000;
+  font-weight: 600;
+}
+
+.description {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #555555;
+  margin-top: 8px;
+  margin-bottom: 24px;
+  padding-top: 14px;
+  border-top: 1px solid #F0F0F0;
+}
+
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.primaryBtn {
+  background: #25D366;
+  color: #FFFFFF;
+  padding: 14px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  transition: opacity 0.2s, transform 0.15s;
+}
+
+.primaryBtn:hover {
+  opacity: 0.92;
+  transform: translateY(-1px);
+}
+
+.secondaryBtn {
+  background: #0A0A0A;
+  color: #FFFFFF;
+  padding: 14px;
+  border-radius: 3px;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-align: center;
+  transition: opacity 0.2s;
+}
+
+.secondaryBtn:hover {
+  opacity: 0.85;
+}

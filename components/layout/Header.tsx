@@ -1,46 +1,150 @@
 'use client';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+import { useStore } from '@/lib/store-context';
 import styles from './Header.module.css';
 
-export default function Header() {
-  const [open, setOpen] = useState(false);
+const NAV_ITEMS = [
+  { label: 'Shirts', href: '/shirts' },
+  { label: 'Shorts', href: '/shorts' },
+  { label: 'Trousers', href: '/trousers' },
+  { label: 'Caps', href: '/caps' },
+];
 
-  const WA = 'https://wa.me/2347013927121?text=Hi%20OPN%20WRLD%2C%20I%27d%20like%20to%20preorder%20the%20001%20Tee.%0AColorway%3A%20%0ASize%3A%20%0AName%3A%20';
+export default function Header() {
+  const pathname = usePathname();
+  const { totalCount } = useStore();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+
+  const isHome = pathname === '/';
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 40) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    handleScroll();
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  // Transparent hero header only on homepage top
+  const isLightMode = isHome && !isScrolled;
 
   return (
-    <>
-      <header className={styles.header}>
-        <div className={styles.inner}>
-          <Link href="/" className={styles.wordmark}>OPN WRLD</Link>
-          <nav className={styles.nav} aria-label="Main navigation">
-            <Link href="/#store" className={styles.link}>Store</Link>
-            <Link href="/archive" className={styles.link}>Archive</Link>
-            <Link href="/community" className={styles.link}>Community</Link>
-          </nav>
-          <a href={WA} target="_blank" rel="noopener noreferrer" className={styles.cta}>
-            Secure Cargo
-          </a>
-          <button
-            className={styles.menuBtn}
-            aria-label={open ? 'Close menu' : 'Open menu'}
-            onClick={() => setOpen(!open)}
+    <header
+      className={`${styles.header} ${isLightMode ? styles.heroHeader : styles.solidHeader} ${
+        isScrolled ? styles.scrolled : ''
+      }`}
+    >
+      <div className={styles.container}>
+        {/* LEFT: SEARCH PAGE LINK */}
+        <div className={styles.left}>
+          <Link
+            href="/search"
+            className={`${styles.searchBtn} ${pathname === '/search' ? styles.activeNav : ''}`}
+            aria-label="Search collection"
           >
-            <span style={{ transform: open ? 'rotate(45deg) translateY(6px)' : undefined }} />
-            <span style={{ opacity: open ? 0 : 1 }} />
-            <span style={{ transform: open ? 'rotate(-45deg) translateY(-6px)' : undefined }} />
+            Search
+          </Link>
+        </div>
+
+        {/* CENTER: OPN WRLD LOGO + CATEGORY SUBNAV */}
+        <div className={styles.center}>
+          <Link href="/" className={styles.logo}>
+            OPN WRLD
+          </Link>
+          <nav className={styles.nav} aria-label="Product categories">
+            {NAV_ITEMS.map((item) => {
+              const isActive = pathname === item.href;
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${styles.navLink} ${isActive ? styles.active : ''}`}
+                >
+                  {item.label}
+                </Link>
+              );
+            })}
+          </nav>
+        </div>
+
+        {/* RIGHT: CHECKOUT PAGE LINK */}
+        <div className={styles.right}>
+          <Link
+            href="/checkout"
+            className={`${styles.checkoutBtn} ${pathname === '/checkout' ? styles.activeNav : ''}`}
+            aria-label="View cargo bag checkout"
+          >
+            Checkout
+            {totalCount > 0 && <span className={styles.badge}>{totalCount}</span>}
+          </Link>
+
+          {/* MOBILE MENU TOGGLE */}
+          <button
+            className={styles.mobileMenuBtn}
+            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+          >
+            <span className={`${styles.menuBar} ${mobileMenuOpen ? styles.openTop : ''}`} />
+            <span className={`${styles.menuBar} ${mobileMenuOpen ? styles.openMid : ''}`} />
+            <span className={`${styles.menuBar} ${mobileMenuOpen ? styles.openBot : ''}`} />
           </button>
         </div>
-      </header>
+      </div>
 
-      <nav className={`${styles.mobileNav} ${open ? styles.open : ''}`} aria-label="Mobile navigation">
-        <Link href="/#store" className={styles.mobileLink} onClick={() => setOpen(false)}>Store</Link>
-        <Link href="/archive" className={styles.mobileLink} onClick={() => setOpen(false)}>Archive</Link>
-        <Link href="/community" className={styles.mobileLink} onClick={() => setOpen(false)}>Community</Link>
-        <a href={WA} target="_blank" rel="noopener noreferrer" className={styles.mobileCta} onClick={() => setOpen(false)}>
-          Secure Cargo
-        </a>
-      </nav>
-    </>
+      {/* MOBILE EXPANDED NAV */}
+      {mobileMenuOpen && (
+        <div className={styles.mobileNav}>
+          <div className={styles.mobileNavLinks}>
+            {NAV_ITEMS.map((item) => (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={styles.mobileNavLink}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                {item.label}
+              </Link>
+            ))}
+            <Link
+              href="/search"
+              className={styles.mobileNavLink}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Search
+            </Link>
+            <Link
+              href="/checkout"
+              className={styles.mobileNavLink}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Checkout ({totalCount})
+            </Link>
+            <Link
+              href="/archive"
+              className={styles.mobileNavLink}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Archive
+            </Link>
+            <Link
+              href="/community"
+              className={styles.mobileNavLink}
+              onClick={() => setMobileMenuOpen(false)}
+            >
+              Community
+            </Link>
+          </div>
+        </div>
+      )}
+    </header>
   );
 }
