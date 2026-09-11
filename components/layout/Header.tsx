@@ -2,6 +2,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useStore } from '@/lib/store-context';
 import styles from './Header.module.css';
 
@@ -33,6 +34,11 @@ export default function Header() {
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
+
+  // Close mobile menu when pathname changes
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [pathname]);
 
   // Transparent hero header only on homepage top
   const isLightMode = isHome && !isScrolled;
@@ -76,7 +82,7 @@ export default function Header() {
           </nav>
         </div>
 
-        {/* RIGHT: CHECKOUT PAGE LINK */}
+        {/* RIGHT: CHECKOUT PAGE LINK & BURGER MENU */}
         <div className={styles.right}>
           <Link
             href="/checkout"
@@ -87,11 +93,12 @@ export default function Header() {
             {totalCount > 0 && <span className={styles.badge}>{totalCount}</span>}
           </Link>
 
-          {/* MOBILE MENU TOGGLE */}
+          {/* MOBILE MENU TOGGLE (BURGER) */}
           <button
             className={styles.mobileMenuBtn}
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
             aria-label={mobileMenuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={mobileMenuOpen}
           >
             <span className={`${styles.menuBar} ${mobileMenuOpen ? styles.openTop : ''}`} />
             <span className={`${styles.menuBar} ${mobileMenuOpen ? styles.openMid : ''}`} />
@@ -100,51 +107,62 @@ export default function Header() {
         </div>
       </div>
 
-      {/* MOBILE EXPANDED NAV */}
-      {mobileMenuOpen && (
-        <div className={styles.mobileNav}>
-          <div className={styles.mobileNavLinks}>
-            {NAV_ITEMS.map((item) => (
+      {/* MOBILE EXPANDED NAV (BURGER MENU) */}
+      <AnimatePresence>
+        {mobileMenuOpen && (
+          <motion.div
+            className={styles.mobileNav}
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            transition={{ duration: 0.25, ease: 'easeInOut' }}
+          >
+            <div className={styles.mobileNavLinks}>
+              {NAV_ITEMS.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${styles.mobileNavLink} ${pathname === item.href ? styles.activeMobileLink : ''}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ))}
               <Link
-                key={item.href}
-                href={item.href}
-                className={styles.mobileNavLink}
+                href="/search"
+                className={`${styles.mobileNavLink} ${pathname === '/search' ? styles.activeMobileLink : ''}`}
                 onClick={() => setMobileMenuOpen(false)}
               >
-                {item.label}
+                Search
               </Link>
-            ))}
-            <Link
-              href="/search"
-              className={styles.mobileNavLink}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Search
-            </Link>
-            <Link
-              href="/checkout"
-              className={styles.mobileNavLink}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Checkout ({totalCount})
-            </Link>
-            <Link
-              href="/archive"
-              className={styles.mobileNavLink}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Archive
-            </Link>
-            <Link
-              href="/community"
-              className={styles.mobileNavLink}
-              onClick={() => setMobileMenuOpen(false)}
-            >
-              Community
-            </Link>
-          </div>
-        </div>
-      )}
+              <Link
+                href="/checkout"
+                className={`${styles.mobileNavLink} ${styles.mobileCheckoutLink} ${
+                  pathname === '/checkout' ? styles.activeMobileLink : ''
+                }`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                <span>Checkout</span>
+                {totalCount > 0 && <span className={styles.mobileBadge}>{totalCount}</span>}
+              </Link>
+              <Link
+                href="/archive"
+                className={`${styles.mobileNavLink} ${pathname === '/archive' ? styles.activeMobileLink : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Archive
+              </Link>
+              <Link
+                href="/community"
+                className={`${styles.mobileNavLink} ${pathname === '/community' ? styles.activeMobileLink : ''}`}
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Community
+              </Link>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 }
