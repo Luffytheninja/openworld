@@ -4,6 +4,8 @@ import './globals.css';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import CustomCursor from '@/components/ui/CustomCursor';
+import MaintenanceSection from '@/components/sections/MaintenanceSection';
+import { IS_MAINTENANCE_MODE } from '@/lib/maintenance';
 import Providers from './providers';
 
 const sedgwickAveDisplay = Sedgwick_Ave_Display({
@@ -28,11 +30,14 @@ export const viewport: Viewport = {
 export const metadata: Metadata = {
   metadataBase: new URL('https://opnwrld.com'),
   title: {
-    default: 'OPN WRLD — Lagos Born Streetwear | Heavyweight Drops',
+    default: IS_MAINTENANCE_MODE
+      ? 'OPN WRLD — Coming Soon | Lagos Born Streetwear'
+      : 'OPN WRLD — Lagos Born Streetwear | Heavyweight Drops',
     template: '%s | OPN WRLD',
   },
-  description:
-    'OPN WRLD is a Lagos-born streetwear brand engineered for raw energy and cultural frequency. Preorder Drop 001: Blinding Lights 280gsm heavyweight graphic tees with signature oversized boxy cuts.',
+  description: IS_MAINTENANCE_MODE
+    ? 'OPN WRLD is currently undergoing scheduled maintenance. Stay tuned for the upcoming drop.'
+    : 'OPN WRLD is a Lagos-born streetwear brand engineered for raw energy and cultural frequency. Preorder Drop 001: Blinding Lights 280gsm heavyweight graphic tees with signature oversized boxy cuts.',
   applicationName: 'OPN WRLD',
   authors: [{ name: 'OPN WRLD', url: 'https://opnwrld.com' }],
   generator: 'Next.js',
@@ -47,32 +52,41 @@ export const metadata: Metadata = {
     'Boxy Fit Streetwear',
     'Lagos Fashion',
     'Afro Streetwear Brand',
+    'Coming Soon',
   ],
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
   },
   openGraph: {
-    title: 'OPN WRLD — Lagos Born Streetwear',
-    description: 'Heavyweight drops, raw energy, LTR frequency. Preorder Drop 001: Blinding Lights.',
+    title: IS_MAINTENANCE_MODE
+      ? 'OPN WRLD — Coming Soon | Lagos Born Streetwear'
+      : 'OPN WRLD — Lagos Born Streetwear',
+    description: IS_MAINTENANCE_MODE
+      ? 'OPN WRLD is currently undergoing scheduled maintenance. Coming soon.'
+      : 'Heavyweight drops, raw energy, LTR frequency. Preorder Drop 001: Blinding Lights.',
     url: 'https://opnwrld.com',
     siteName: 'OPN WRLD',
     locale: 'en_NG',
     type: 'website',
     images: [
       {
-        url: '/opn-wrld-hero-image.png',
-        width: 1200,
-        height: 630,
-        alt: 'OPN WRLD Lagos Streetwear — LTR Drop',
+        url: '/images/down-for-maintenance-desktop-warm.png',
+        width: 1440,
+        height: 1024,
+        alt: 'OPN WRLD Maintenance — Coming Soon',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'OPN WRLD — Lagos Born Streetwear',
-    description: 'Preorder the latest OPN WRLD drops. Heavyweight 280gsm Lagos-born streetwear.',
-    images: ['/opn-wrld-hero-image.png'],
+    title: IS_MAINTENANCE_MODE
+      ? 'OPN WRLD — Coming Soon | Lagos Born Streetwear'
+      : 'OPN WRLD — Lagos Born Streetwear',
+    description: IS_MAINTENANCE_MODE
+      ? 'OPN WRLD is currently undergoing scheduled maintenance. Coming soon.'
+      : 'Preorder the latest OPN WRLD drops. Heavyweight 280gsm Lagos-born streetwear.',
+    images: ['/images/down-for-maintenance-desktop-warm.png'],
   },
   robots: {
     index: true,
@@ -100,7 +114,7 @@ const jsonLd = {
       name: 'OPN WRLD',
       url: 'https://opnwrld.com',
       logo: 'https://opnwrld.com/favicon.png',
-      image: 'https://opnwrld.com/opn-wrld-hero-image.png',
+      image: 'https://opnwrld.com/images/down-for-maintenance-desktop-warm.png',
       description: 'Lagos-born streetwear brand creating heavyweight drops, raw frequency apparel, and oversized garments.',
       address: {
         '@type': 'PostalAddress',
@@ -223,9 +237,15 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <body>
         <Providers>
           <CustomCursor />
-          <Header />
-          <main className="page-transition">{children}</main>
-          <Footer />
+          {IS_MAINTENANCE_MODE ? (
+            <MaintenanceSection />
+          ) : (
+            <>
+              <Header />
+              <main className="page-transition">{children}</main>
+              <Footer />
+            </>
+          )}
         </Providers>
       </body>
     </html>
