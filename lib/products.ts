@@ -70,6 +70,9 @@ export const PRODUCTS: Product[] = [
   },
 ];
 
+export const DROP_001_DETAILS =
+  '280gsm heavyweight ringspun cotton tee with signature Lagos streetwear cut. Custom dropped shoulder profile, ribbed crew neck, pre-washed for zero shrinkage.';
+
 export const CATEGORIES = [
   { id: 'shirts', label: 'Shirts', href: '/shirts' },
   { id: 'shorts', label: 'Shorts', href: '/shorts' },

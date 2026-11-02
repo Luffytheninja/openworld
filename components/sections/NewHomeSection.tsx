@@ -1,7 +1,7 @@
 'use client';
 import Image from 'next/image';
 import { useStore } from '@/lib/store-context';
-import { PRODUCTS, Product } from '@/lib/products';
+import { PRODUCTS, Product, DROP_001_DETAILS } from '@/lib/products';
 import styles from './NewHomeSection.module.css';
 
 export default function NewHomeSection() {
@@ -11,6 +11,8 @@ export default function NewHomeSection() {
   const whiteShirt = PRODUCTS.find((p) => p.id === 'blinding-lights-white') || PRODUCTS[2] || PRODUCTS[0];
   const blackShirt = PRODUCTS.find((p) => p.id === 'blinding-lights-black') || PRODUCTS[0];
   const yellowShirt = PRODUCTS.find((p) => p.id === 'blinding-lights-yellow') || PRODUCTS[1];
+
+  const dropDetails = DROP_001_DETAILS || blackShirt?.description || 'Not available';
 
   const featuredShirts = [
     { product: whiteShirt, image: '/images/blwf.png', alt: 'Blinding Lights — White' },
@@ -67,7 +69,7 @@ export default function NewHomeSection() {
             <div className={styles.dropDescription}>
               <p className={styles.detailsLabel}>Details of the drop</p>
               <p className={styles.detailsBody}>
-                consectetur. Est nisi sed molestie libero ultrices viverra amet urna ultrices. Donec tempus pharetra pellentesque eget elit sed potenti.
+                {dropDetails}
               </p>
             </div>
           </div>
