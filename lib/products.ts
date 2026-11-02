@@ -17,7 +17,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'blinding-lights-black',
     name: 'Blinding Lights — Black',
-    price: 'N30,000',
+    price: '₦30,000',
     priceNum: 30000,
     category: 'shirts',
     image: '/images/blbf.png',
@@ -35,7 +35,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'blinding-lights-yellow',
     name: 'Blinding Lights — Yellow',
-    price: 'N30,000',
+    price: '₦30,000',
     priceNum: 30000,
     category: 'shirts',
     image: '/images/blyf.png',
@@ -53,7 +53,7 @@ export const PRODUCTS: Product[] = [
   {
     id: 'blinding-lights-white',
     name: 'Blinding Lights — White',
-    price: 'N30,000',
+    price: '₦30,000',
     priceNum: 30000,
     category: 'shirts',
     image: '/images/blwf.png',

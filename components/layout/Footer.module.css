@@ -1,90 +1,147 @@
-﻿.footer {
+.footer {
   background: #FFFFFF;
   color: #0A0A0A;
-  border-top: 1px solid #EEEEEE;
-  padding: 48px 0 28px;
+  padding: 0 0 32px;
+  width: 100%;
 }
 
 .container {
-  max-width: 1440px;
-  width: 100%;
+  max-width: var(--max-w, 1100px);
   margin: 0 auto;
-  padding: 0 clamp(20px, 4vw, 48px);
+  padding: 0 var(--pad-x, 24px);
 }
 
-.top {
-  display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 32px;
-  padding-bottom: 32px;
-  border-bottom: 1px solid #EEEEEE;
-  margin-bottom: 20px;
+/* ─── DITHER BANNER ─── */
+.ditherWrapper {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #1d1d1f;
+  margin-top: 12px;
+  border-radius: 4px;
 }
 
-@media (max-width: 768px) {
-  .top {
-    grid-template-columns: 1fr 1fr;
-  }
+.ditherCanvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  image-rendering: pixelated;
+  touch-action: pan-y;
+  cursor: crosshair;
 }
 
-@media (max-width: 480px) {
-  .top {
-    grid-template-columns: 1fr;
-  }
-}
-
-.wordmark {
-  font-family: var(--font-display);
-  font-size: 28px;
-  font-weight: 400;
-  letter-spacing: 0.02em;
-  margin-bottom: 6px;
-}
-
-.tagline {
-  font-size: 12px;
-  color: #888888;
-  letter-spacing: 0.02em;
-}
-
-.group {
+/* ─── COMMUNITY OVERLAY ─── */
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: none;
+  padding: 20px;
+  gap: 16px;
 }
 
-.group h4 {
-  font-size: 11px;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #888888;
-  margin-bottom: 4px;
+.overlayTitle {
+  font-family: var(--font-body);
+  font-size: clamp(20px, 3.4vw, 36px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.7);
+  user-select: none;
 }
 
-.group a {
-  font-size: 14px;
-  color: #0A0A0A;
+.joinButton {
+  pointer-events: auto;
+  background: #FFFFFF;
+  color: #141414;
+  font-family: var(--font-body);
+  font-size: clamp(12px, 1.3vw, 14px);
+  font-weight: 500;
+  padding: 9px 24px;
+  border-radius: 2px;
   text-decoration: none;
-  transition: opacity 0.2s;
+  letter-spacing: 0.01em;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: background-color 0.15s ease, color 0.15s ease, transform 0.15s ease;
+  user-select: none;
+  display: inline-block;
 }
 
-.group a:hover {
-  opacity: 0.6;
+.joinButton:hover {
+  background: #141414;
+  color: #FFFFFF;
+  outline: 1px solid #FFFFFF;
+  transform: translateY(-1px);
 }
 
-.bottom {
+/* ─── BOTTOM METADATA BAR ─── */
+.bottomBar {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+  gap: 16px;
+  padding-top: 24px;
+  font-size: 12px;
+  color: #888888;
+  border-top: 1px solid #EEEEEE;
+  margin-top: 24px;
+}
+
+.brandMeta {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+}
+
+.brandName {
+  font-family: 'Special Elite', var(--font-logo), monospace;
+  font-size: 14px;
+  color: #0A0A0A;
+}
+
+.tagline {
+  font-size: 11px;
+  color: #888888;
+}
+
+.links {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.links a {
+  color: #444444;
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.links a:hover {
+  color: #0A0A0A;
 }
 
 .copy {
-  font-size: 12px;
-  color: #888888;
+  font-size: 11px;
+  color: #999999;
 }
 
-.location {
-  font-size: 12px;
-  color: #888888;
+@media (max-width: 768px) {
+  .overlay {
+    gap: 12px;
+  }
+  .bottomBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+  }
 }
